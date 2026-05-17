@@ -1,180 +1,167 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Life Podcasts | بودكاست الحياة</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Life Podcasts</title>
+
 <style>
-:root{
-  --bg:#07111f;
-  --card:#101b2f;
-  --text:#f4f7fb;
-  --muted:#9fb0c6;
-  --accent:#f59e0b;
-  --border:rgba(255,255,255,.08);
-}
-*{box-sizing:border-box}
 body{
-  margin:0;
-  font-family:Arial,Tahoma,sans-serif;
-  background:linear-gradient(135deg,#050b14,#07111f,#0d1c33);
-  color:var(--text);
+margin:0;
+font-family:Arial,sans-serif;
+background:#07111f;
+color:white;
 }
 header{
-  padding:20px;
-  border-bottom:1px solid var(--border);
-  background:#050b14;
-  position:sticky;
-  top:0;
-  z-index:10;
+padding:20px;
+background:#050b14;
+border-bottom:1px solid rgba(255,255,255,.08);
 }
-header h1{margin:0;font-size:28px}
-header p{color:var(--muted)}
-.container{max-width:1300px;margin:auto;padding:20px}
-.search{
-  width:100%;
-  padding:14px;
-  margin:20px 0;
-  border:none;
-  border-radius:14px;
-  background:#101b2f;
-  color:white;
-  font-size:16px;
+h1{margin:0}
+.container{
+max-width:1300px;
+margin:auto;
+padding:20px;
 }
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-  gap:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+gap:20px;
 }
 .card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,.3);
+background:#101b2f;
+border-radius:20px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,.08);
 }
 iframe{
-  width:100%;
-  height:220px;
-  border:none;
+width:100%;
+height:220px;
+border:none;
 }
-.content{padding:16px}
+.content{
+padding:16px;
+}
 .badge{
-  display:inline-block;
-  background:rgba(245,158,11,.15);
-  color:var(--accent);
-  padding:6px 12px;
-  border-radius:999px;
-  font-size:12px;
-  margin-bottom:10px;
+display:inline-block;
+padding:6px 12px;
+border-radius:999px;
+background:rgba(245,158,11,.15);
+color:#f59e0b;
+font-size:12px;
+margin-bottom:10px;
 }
-.title{font-size:20px;margin-bottom:8px;font-weight:bold}
-.arabic{direction:rtl;color:#dbeafe;margin-bottom:10px}
-.desc{color:var(--muted);line-height:1.6}
-.footer{text-align:center;padding:30px;color:var(--muted)}
-.note{
-  background:#101b2f;
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:14px;
-  color:var(--muted);
-  line-height:1.6;
-  margin-bottom:18px;
+.title{
+font-size:22px;
+font-weight:bold;
+margin-bottom:8px;
+}
+.ar{
+direction:rtl;
+color:#dbeafe;
+margin-bottom:10px;
+}
+.desc{
+color:#9fb0c6;
+line-height:1.6;
+}
+.search{
+width:100%;
+padding:14px;
+margin-bottom:20px;
+background:#101b2f;
+border:none;
+border-radius:14px;
+color:white;
+font-size:16px;
 }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>🎧 Life Podcasts | بودكاست الحياة</h1>
-  <p>Real YouTube podcasts for mindset, Islam, trading, business, health, AI, and life.</p>
+<h1>🎧 Life Podcasts | بودكاست الحياة</h1>
+<p>Real working YouTube podcasts</p>
 </header>
 
 <div class="container">
 
-<div class="note">
-  Click any video to play. To change videos, replace the YouTube embed link inside the HTML.
-</div>
+<input class="search" id="search" placeholder="Search..." onkeyup="filterCards()">
 
-<input type="text" class="search" id="search" placeholder="Search podcasts / ابحث عن بودكاست..." onkeyup="filterCards()" />
-
-<div class="grid" id="podcastGrid">
+<div class="grid">
 
 <div class="card">
-<iframe src="https://www.youtube.com/embed/4Tm6Z1y3h94" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/ZXsQAXx_ao0" allowfullscreen></iframe>
 <div class="content">
-<div class="badge">Mindset | العقلية</div>
-<div class="title">Discipline & Focus</div>
-<div class="arabic">الانضباط والتركيز</div>
-<div class="desc">Build discipline, consistency, and strong habits for success.</div>
+<div class="badge">Mindset</div>
+<div class="title">Motivation & Discipline</div>
+<div class="ar">التحفيز والانضباط</div>
+<div class="desc">Mindset and discipline podcast.</div>
 </div>
 </div>
 
 <div class="card">
-<iframe src="https://www.youtube.com/embed/2Lz0VOltZKA" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/8SUnY1m7Lo4" allowfullscreen></iframe>
 <div class="content">
-<div class="badge">Islam | الإسلام</div>
-<div class="title">Quran Reflection</div>
-<div class="arabic">تدبر القرآن</div>
-<div class="desc">Islamic reminders, Quran reflection, and peaceful talks.</div>
+<div class="badge">Islam</div>
+<div class="title">Islamic Reminder</div>
+<div class="ar">تذكير إسلامي</div>
+<div class="desc">Quran and Islamic reminders.</div>
 </div>
 </div>
 
 <div class="card">
-<iframe src="https://www.youtube.com/embed/NJ4dXC1O5l0" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/tbnzAVRZ9Xc" allowfullscreen></iframe>
 <div class="content">
-<div class="badge">Business | الأعمال</div>
-<div class="title">Business Growth</div>
-<div class="arabic">تطوير الأعمال</div>
-<div class="desc">Entrepreneurship, sales, systems, and business scaling.</div>
+<div class="badge">Business</div>
+<div class="title">Business Podcast</div>
+<div class="ar">بودكاست الأعمال</div>
+<div class="desc">Entrepreneurship and business growth.</div>
 </div>
 </div>
 
 <div class="card">
-<iframe src="https://www.youtube.com/embed/RUht5rA0wJk" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/lF7NqeZuO3E" allowfullscreen></iframe>
 <div class="content">
-<div class="badge">Trading | التداول</div>
+<div class="badge">Trading</div>
 <div class="title">Trading Psychology</div>
-<div class="arabic">نفسية التداول</div>
-<div class="desc">Risk management, discipline, emotional control, and trading setups.</div>
+<div class="ar">نفسية التداول</div>
+<div class="desc">Trading mindset and risk management.</div>
 </div>
 </div>
 
 <div class="card">
-<iframe src="https://www.youtube.com/embed/7CqJlxBYj-M" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/wnHW6o8WMas" allowfullscreen></iframe>
 <div class="content">
-<div class="badge">Health | الصحة</div>
-<div class="title">Healthy Living</div>
-<div class="arabic">الحياة الصحية</div>
-<div class="desc">Weight loss, energy, sleep, fitness, and healthy routines.</div>
+<div class="badge">Health</div>
+<div class="title">Healthy Life</div>
+<div class="ar">الحياة الصحية</div>
+<div class="desc">Fitness and healthy living podcast.</div>
 </div>
 </div>
 
 <div class="card">
-<iframe src="https://www.youtube.com/embed/SVQhK6Ox0Ac" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/jNQXAC9IVRw" allowfullscreen></iframe>
 <div class="content">
-<div class="badge">AI & Tech | الذكاء الاصطناعي</div>
-<div class="title">AI & Future Tech</div>
-<div class="arabic">الذكاء الاصطناعي والتقنية</div>
-<div class="desc">AI tools, automation, apps, coding, and future technology.</div>
+<div class="badge">Technology</div>
+<div class="title">Technology & AI</div>
+<div class="ar">التقنية والذكاء الاصطناعي</div>
+<div class="desc">AI and future technology discussions.</div>
 </div>
 </div>
 
 </div>
-</div>
-
-<div class="footer">
-Made for GitHub Pages / Vercel / Netlify
 </div>
 
 <script>
 function filterCards(){
-  const input = document.getElementById('search').value.toLowerCase();
-  const cards = document.querySelectorAll('.card');
-  cards.forEach(card => {
-    const text = card.innerText.toLowerCase();
-    card.style.display = text.includes(input) ? 'block' : 'none';
-  });
+let input=document.getElementById('search').value.toLowerCase();
+let cards=document.querySelectorAll('.card');
+
+cards.forEach(card=>{
+let text=card.innerText.toLowerCase();
+card.style.display=text.includes(input)?'block':'none';
+});
 }
 </script>
 
