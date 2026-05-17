@@ -1,23 +1,20 @@
-# Life Podcasts App | بودكاست الحياة
+# Life Podcasts App — Working Playback Version
 
-A simple bilingual Arabic/English pre-built podcast web app.
+This version uses the browser's built-in **Speech Synthesis** voice system.
 
-## Files
-- `index.html` — the full app in one file.
+## How it plays
+- Click **Play**
+- The app reads the podcast summary out loud
+- Works on Chrome, Edge, Safari, and most modern browsers
+- No MP3 hosting needed
 
-## How to upload to GitHub Pages
+## GitHub Pages
+1. Upload `index.html` to a GitHub repo.
+2. Go to Settings → Pages.
+3. Source: Deploy from branch.
+4. Branch: main.
+5. Folder: /root.
+6. Save.
 
-1. Create a new GitHub repository.
-2. Upload `index.html` to the repository.
-3. Go to **Settings**.
-4. Click **Pages**.
-5. Under **Build and deployment**, choose:
-   - Source: `Deploy from a branch`
-   - Branch: `main`
-   - Folder: `/root`
-6. Click **Save**.
-7. GitHub will give you a website link.
-
-## How to use
-Open the app in any browser. It works as a static website.
-Saved podcasts are stored in the browser using `localStorage`.
+## Important
+Arabic voice depends on the browser/device. If Arabic voice is not installed, the browser may use another voice.

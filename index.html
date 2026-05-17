@@ -6,586 +6,203 @@
   <title>Life Podcasts | بودكاست الحياة</title>
   <style>
     :root{
-      --bg:#07111f;
-      --card:#101b2f;
-      --card2:#13233d;
-      --text:#f4f7fb;
-      --muted:#9fb0c6;
-      --accent:#f5a623;
-      --green:#22c55e;
-      --red:#ef4444;
-      --blue:#38bdf8;
-      --border:rgba(255,255,255,.09);
+      --bg:#07111f; --card:#101b2f; --card2:#13233d; --text:#f4f7fb;
+      --muted:#9fb0c6; --accent:#f5a623; --green:#22c55e; --border:rgba(255,255,255,.1);
     }
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Inter,Arial,Tahoma,sans-serif;
-      background:linear-gradient(135deg,#050b14,#07111f 55%,#0d1c33);
-      color:var(--text);
-      min-height:100vh;
-    }
-    header{
-      padding:22px 18px;
-      border-bottom:1px solid var(--border);
-      background:rgba(5,11,20,.85);
-      position:sticky;
-      top:0;
-      z-index:20;
-      backdrop-filter:blur(10px);
-    }
-    .top{
-      max-width:1180px;
-      margin:auto;
-      display:flex;
-      justify-content:space-between;
-      gap:14px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-    h1{
-      margin:0;
-      font-size:28px;
-      letter-spacing:.3px;
-    }
-    .subtitle{color:var(--muted);margin-top:6px;font-size:14px}
-    .controls{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    button,input,select{
-      border:1px solid var(--border);
-      background:var(--card);
-      color:var(--text);
-      border-radius:14px;
-      padding:11px 13px;
-      outline:none;
-      font-size:14px;
-    }
-    button{
-      cursor:pointer;
-      font-weight:700;
-      transition:.2s;
-    }
-    button:hover{transform:translateY(-1px);border-color:var(--accent)}
-    .primary{background:linear-gradient(135deg,#f59e0b,#f97316);color:#111827}
-    main{
-      max-width:1180px;
-      margin:auto;
-      padding:20px 18px 80px;
-    }
-    .hero{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:18px;
-      margin-bottom:18px;
-    }
-    .panel{
-      background:rgba(16,27,47,.86);
-      border:1px solid var(--border);
-      border-radius:24px;
-      padding:18px;
-      box-shadow:0 18px 50px rgba(0,0,0,.25);
-    }
-    .hero h2{margin:0 0 8px;font-size:24px}
-    .hero p{margin:0;color:var(--muted);line-height:1.6}
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:10px;
-    }
-    .stat{
-      background:var(--card2);
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:13px;
-    }
-    .stat b{font-size:22px;color:var(--accent)}
-    .stat span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
-    .toolbar{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin:18px 0;
-    }
-    .toolbar input{flex:1;min-width:220px}
-    .chips{
-      display:flex;
-      gap:8px;
-      overflow-x:auto;
-      padding-bottom:8px;
-      margin-bottom:15px;
-    }
-    .chip{
-      white-space:nowrap;
-      border-radius:999px;
-      padding:10px 14px;
-      background:#0e1a2d;
-      color:var(--muted);
-      border:1px solid var(--border);
-    }
-    .chip.active{
-      color:#111827;
-      background:var(--accent);
-      border-color:var(--accent);
-    }
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:15px;
-    }
-    .podcast{
-      background:linear-gradient(180deg,rgba(19,35,61,.95),rgba(11,20,35,.95));
-      border:1px solid var(--border);
-      border-radius:22px;
-      padding:16px;
-      min-height:255px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-    .badge{
-      display:inline-flex;
-      width:max-content;
-      gap:6px;
-      align-items:center;
-      border:1px solid var(--border);
-      color:var(--accent);
-      border-radius:999px;
-      padding:6px 10px;
-      font-size:12px;
-      margin-bottom:10px;
-    }
-    .podcast h3{margin:0 0 7px;font-size:19px}
-    .arabic{
-      direction:rtl;
-      font-family:Tahoma,Arial,sans-serif;
-      color:#dbeafe;
-      margin-bottom:8px;
-    }
-    .summary{
-      color:var(--muted);
-      line-height:1.55;
-      font-size:14px;
-      margin:0 0 12px;
-    }
-    .meta{
-      display:flex;
-      justify-content:space-between;
-      color:#cbd5e1;
-      font-size:13px;
-      padding:10px 0;
-      border-top:1px solid var(--border);
-      border-bottom:1px solid var(--border);
-      margin-bottom:12px;
-    }
-    .actions{display:flex;gap:8px;flex-wrap:wrap}
-    .small{padding:9px 10px;font-size:13px}
-    .save.saved{background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.6);color:#86efac}
-    .player{
-      position:fixed;
-      left:0;
-      right:0;
-      bottom:0;
-      background:#050b14;
-      border-top:1px solid var(--border);
-      padding:12px 18px;
-      z-index:30;
-    }
-    .player-inner{
-      max-width:1180px;
-      margin:auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-    .now{color:var(--muted);font-size:14px}
-    .now b{color:var(--text)}
-    .progress{
-      flex:1;
-      min-width:200px;
-      height:8px;
-      background:#17233a;
-      border-radius:999px;
-      overflow:hidden;
-    }
-    .bar{
-      width:0%;
-      height:100%;
-      background:var(--accent);
-      transition:.3s;
-    }
-    .modal{
-      display:none;
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.6);
-      z-index:50;
-      padding:20px;
-    }
-    .modal.show{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-    .modal-card{
-      max-width:650px;
-      width:100%;
-      background:#0b1423;
-      border:1px solid var(--border);
-      border-radius:24px;
-      padding:20px;
-      box-shadow:0 20px 70px rgba(0,0,0,.4);
-    }
-    .modal-card p{color:var(--muted);line-height:1.7}
-    .modal-card ul{color:#dbeafe;line-height:1.8}
-    @media(max-width:900px){
-      .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns:repeat(2,1fr)}
-    }
-    @media(max-width:620px){
-      h1{font-size:23px}
-      .grid{grid-template-columns:1fr}
-      .stats{grid-template-columns:1fr}
-      .player-inner{align-items:flex-start}
-    }
+    body{margin:0;font-family:Inter,Arial,Tahoma,sans-serif;background:linear-gradient(135deg,#050b14,#07111f 55%,#0d1c33);color:var(--text);min-height:100vh}
+    header{padding:20px 16px;border-bottom:1px solid var(--border);background:rgba(5,11,20,.88);position:sticky;top:0;z-index:20;backdrop-filter:blur(10px)}
+    .top{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap}
+    h1{margin:0;font-size:28px}.subtitle{color:var(--muted);margin-top:6px;font-size:14px}
+    button,input,select{border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:14px;padding:11px 13px;outline:none;font-size:14px}
+    button{cursor:pointer;font-weight:800;transition:.2s}button:hover{transform:translateY(-1px);border-color:var(--accent)}
+    .primary{background:linear-gradient(135deg,#f59e0b,#f97316);color:#111827}.green{background:rgba(34,197,94,.16);border-color:rgba(34,197,94,.5);color:#86efac}
+    main{max-width:1180px;margin:auto;padding:20px 16px 95px}.panel{background:rgba(16,27,47,.9);border:1px solid var(--border);border-radius:24px;padding:18px;box-shadow:0 18px 50px rgba(0,0,0,.25)}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-bottom:18px}.hero h2{margin:0 0 8px}.hero p{margin:0;color:var(--muted);line-height:1.65}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:13px}.stat b{font-size:22px;color:var(--accent)}.stat span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.toolbar input{flex:1;min-width:220px}
+    .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:15px}.chip{white-space:nowrap;border-radius:999px;padding:10px 14px;background:#0e1a2d;color:var(--muted);border:1px solid var(--border)}.chip.active{color:#111827;background:var(--accent)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .podcast{background:linear-gradient(180deg,rgba(19,35,61,.96),rgba(11,20,35,.96));border:1px solid var(--border);border-radius:22px;padding:16px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between}
+    .badge{display:inline-flex;width:max-content;border:1px solid var(--border);color:var(--accent);border-radius:999px;padding:6px 10px;font-size:12px;margin-bottom:10px}
+    .podcast h3{margin:0 0 7px;font-size:19px}.arabic{direction:rtl;font-family:Tahoma,Arial,sans-serif;color:#dbeafe;margin-bottom:8px}
+    .summary{color:var(--muted);line-height:1.55;font-size:14px;margin:0 0 12px}.meta{display:flex;justify-content:space-between;color:#cbd5e1;font-size:13px;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:12px}
+    .actions{display:flex;gap:8px;flex-wrap:wrap}.small{padding:9px 10px;font-size:13px}.save.saved{background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.6);color:#86efac}
+    .player{position:fixed;left:0;right:0;bottom:0;background:#050b14;border-top:1px solid var(--border);padding:12px 16px;z-index:30}.player-inner{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.now{color:var(--muted);font-size:14px}.now b{color:var(--text)}
+    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:50;padding:20px}.modal.show{display:flex;justify-content:center;align-items:center}.modal-card{max-width:670px;width:100%;background:#0b1423;border:1px solid var(--border);border-radius:24px;padding:20px}.modal-card p{color:var(--muted);line-height:1.7}.modal-card ul{color:#dbeafe;line-height:1.8}
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){h1{font-size:23px}.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <header>
-    <div class="top">
-      <div>
-        <h1>Life Podcasts <span style="color:var(--accent)">|</span> بودكاست الحياة</h1>
-        <div class="subtitle">Pre-built podcast library for mindset, Islam, business, trading, health, family, and AI.</div>
-      </div>
-      <div class="controls">
-        <button onclick="toggleLanguage()">Arabic / English</button>
-        <button class="primary" onclick="showSaved()">Saved</button>
-      </div>
+<header>
+  <div class="top">
+    <div>
+      <h1>Life Podcasts <span style="color:var(--accent)">|</span> بودكاست الحياة</h1>
+      <div class="subtitle">Now with real browser voice playback — English and Arabic.</div>
     </div>
-  </header>
+    <div class="controls">
+      <button onclick="toggleLanguage()">Arabic / English</button>
+      <button class="primary" onclick="showSaved()">Saved</button>
+    </div>
+  </div>
+</header>
 
-  <main>
-    <section class="hero">
-      <div class="panel">
-        <h2 id="heroTitle">Your daily audio learning app</h2>
-        <p id="heroText">Open the app, choose a life category, play a pre-built episode idea, save it, and convert it into simple action steps.</p>
-      </div>
-      <div class="panel stats">
-        <div class="stat"><b id="statShows">0</b><span>Podcast ideas</span></div>
-        <div class="stat"><b>8</b><span>Life categories</span></div>
-        <div class="stat"><b>2</b><span>Languages</span></div>
-      </div>
-    </section>
-
-    <section class="toolbar">
-      <input id="search" placeholder="Search podcast / ابحث عن بودكاست..." oninput="render()" />
-      <select id="sort" onchange="render()">
-        <option value="default">Default</option>
-        <option value="short">Shortest first</option>
-        <option value="long">Longest first</option>
-      </select>
-    </section>
-
-    <div id="chips" class="chips"></div>
-    <section id="podcasts" class="grid"></section>
-  </main>
-
-  <section class="player">
-    <div class="player-inner">
-      <div class="now" id="nowPlaying">Now playing: <b>Nothing yet</b></div>
-      <div class="progress"><div class="bar" id="bar"></div></div>
-      <button class="small" onclick="stopPlayer()">Stop</button>
+<main>
+  <section class="hero">
+    <div class="panel">
+      <h2 id="heroTitle">Your daily audio learning app</h2>
+      <p id="heroText">Press Play and the app will read the podcast using your browser voice. Works on GitHub Pages.</p>
+    </div>
+    <div class="panel stats">
+      <div class="stat"><b id="statShows">16</b><span>Podcast episodes</span></div>
+      <div class="stat"><b>8</b><span>Categories</span></div>
+      <div class="stat"><b>Voice</b><span>Real playback</span></div>
     </div>
   </section>
 
-  <div id="modal" class="modal" onclick="closeModal(event)">
-    <div class="modal-card">
-      <h2 id="modalTitle"></h2>
-      <p id="modalSummary"></p>
-      <h3>Action Steps | خطوات عملية</h3>
-      <ul id="modalSteps"></ul>
-      <button class="primary" onclick="document.getElementById('modal').classList.remove('show')">Close</button>
-    </div>
+  <section class="toolbar">
+    <input id="search" placeholder="Search podcast / ابحث عن بودكاست..." oninput="render()" />
+    <select id="sort" onchange="render()">
+      <option value="default">Default</option><option value="short">Shortest first</option><option value="long">Longest first</option>
+    </select>
+  </section>
+
+  <div id="chips" class="chips"></div>
+  <section id="podcasts" class="grid"></section>
+</main>
+
+<section class="player">
+  <div class="player-inner">
+    <div class="now" id="nowPlaying">Now playing: <b>Nothing yet</b></div>
+    <button class="small green" onclick="resumeAudio()">Resume</button>
+    <button class="small" onclick="pauseAudio()">Pause</button>
+    <button class="small" onclick="stopAudio()">Stop</button>
   </div>
+</section>
+
+<div id="modal" class="modal" onclick="closeModal(event)">
+  <div class="modal-card">
+    <h2 id="modalTitle"></h2>
+    <p id="modalSummary"></p>
+    <h3>Action Steps | خطوات عملية</h3>
+    <ul id="modalSteps"></ul>
+    <button class="primary" onclick="document.getElementById('modal').classList.remove('show')">Close</button>
+  </div>
+</div>
 
 <script>
-const categories = [
-  {id:"all", en:"All", ar:"الكل"},
-  {id:"mindset", en:"Mindset", ar:"العقلية"},
-  {id:"islam", en:"Islam", ar:"الإسلام"},
-  {id:"business", en:"Business", ar:"الأعمال"},
-  {id:"trading", en:"Trading", ar:"التداول"},
-  {id:"health", en:"Health", ar:"الصحة"},
-  {id:"family", en:"Family", ar:"العائلة"},
-  {id:"ai", en:"AI & Tech", ar:"الذكاء الاصطناعي"},
-  {id:"life", en:"Life Skills", ar:"مهارات الحياة"}
+const categories=[
+{id:"all",en:"All",ar:"الكل"},{id:"mindset",en:"Mindset",ar:"العقلية"},{id:"islam",en:"Islam",ar:"الإسلام"},{id:"business",en:"Business",ar:"الأعمال"},{id:"trading",en:"Trading",ar:"التداول"},{id:"health",en:"Health",ar:"الصحة"},{id:"family",en:"Family",ar:"العائلة"},{id:"ai",en:"AI & Tech",ar:"الذكاء الاصطناعي"},{id:"life",en:"Life Skills",ar:"مهارات الحياة"}];
+
+const podcasts=[
+{id:1,cat:"mindset",minutes:18,en:"Discipline Before Motivation",ar:"الانضباط قبل التحفيز",summary:"Learn why discipline beats temporary motivation and how to build a daily system.",arSummary:"تعلم لماذا الانضباط أقوى من التحفيز المؤقت وكيف تبني نظاماً يومياً ثابتاً.",steps:["Pick one daily habit.","Do it at the same time every day.","Track it for 7 days."]},
+{id:2,cat:"mindset",minutes:22,en:"Stop Overthinking",ar:"توقف عن التفكير الزائد",summary:"Simple mental tools to reduce stress, decide faster, and stay focused.",arSummary:"أدوات بسيطة لتقليل التوتر واتخاذ القرار بسرعة والحفاظ على التركيز.",steps:["Write the problem in one sentence.","Choose the next small action.","Set a 10-minute decision timer."]},
+{id:3,cat:"islam",minutes:15,en:"Morning Athkar Routine",ar:"روتين أذكار الصباح",summary:"A peaceful morning routine with remembrance, gratitude, and protection duas.",arSummary:"روتين صباحي هادئ مع الذكر والشكر وأدعية الحفظ.",steps:["Start after Fajr or when you wake up.","Read slowly with meaning.","Repeat daily for consistency."]},
+{id:4,cat:"islam",minutes:25,en:"Quran Reflection for Busy People",ar:"تدبر القرآن للناس المشغولين",summary:"How to connect with Quran even with a busy schedule.",arSummary:"كيف ترتبط بالقرآن حتى مع جدول يومي مزدحم.",steps:["Read 5 verses daily.","Write one lesson.","Apply one action that day."]},
+{id:5,cat:"business",minutes:28,en:"Build a Small Business System",ar:"بناء نظام للأعمال الصغيرة",summary:"Turn daily business chaos into repeatable systems for sales, follow-up, and service.",arSummary:"حوّل فوضى العمل اليومية إلى أنظمة متكررة للمبيعات والمتابعة والخدمة.",steps:["Write your repeated tasks.","Make a checklist.","Automate one task this week."]},
+{id:6,cat:"business",minutes:21,en:"Sales Follow-Up That Works",ar:"متابعة العملاء بطريقة ناجحة",summary:"A practical way to follow up with customers without sounding pushy.",arSummary:"طريقة عملية لمتابعة العملاء بدون ضغط زائد.",steps:["Reply fast.","Ask one clear question.","Offer the next step."]},
+{id:7,cat:"trading",minutes:30,en:"Trading Psychology & Risk",ar:"نفسية التداول وإدارة المخاطر",summary:"Protect your capital by controlling emotion, position size, and bad entries.",arSummary:"احمِ رأس مالك بالتحكم في العاطفة وحجم الصفقة وتجنب الدخول السيئ.",steps:["Risk small per trade.","Write entry and stop first.","Do not chase candles."]},
+{id:8,cat:"trading",minutes:26,en:"A+ Setup Checklist",ar:"قائمة صفقة A+",summary:"Use trend, VWAP, volume, and market bias before entering a trade.",arSummary:"استخدم الاتجاه و VWAP والحجم واتجاه السوق قبل الدخول في الصفقة.",steps:["Check market direction.","Confirm VWAP and EMA alignment.","Wait for volume confirmation."]},
+{id:9,cat:"health",minutes:20,en:"Lose Belly Fat the Smart Way",ar:"خسارة دهون البطن بطريقة ذكية",summary:"Simple nutrition, walking, and strength habits to reduce belly fat over time.",arSummary:"عادات بسيطة في التغذية والمشي والتمارين لتقليل دهون البطن مع الوقت.",steps:["Walk 20-30 minutes.","Reduce sugary drinks.","Eat protein with each meal."]},
+{id:10,cat:"health",minutes:17,en:"Energy Every Morning",ar:"طاقة كل صباح",summary:"A morning routine for hydration, movement, breathing, and better focus.",arSummary:"روتين صباحي للماء والحركة والتنفس والتركيز الأفضل.",steps:["Drink water.","Move for 5 minutes.","Eat a balanced breakfast."]},
+{id:11,cat:"family",minutes:19,en:"Better Family Communication",ar:"تواصل عائلي أفضل",summary:"How to listen, speak calmly, and reduce arguments at home.",arSummary:"كيف تستمع وتتحدث بهدوء وتقلل الخلافات في البيت.",steps:["Listen before replying.","Use calm voice.","Solve one issue at a time."]},
+{id:12,cat:"family",minutes:24,en:"Teaching Kids Good Habits",ar:"تعليم الأطفال العادات الجيدة",summary:"Make habits easy, visual, and rewarding for children.",arSummary:"اجعل العادات سهلة وواضحة ومشجعة للأطفال.",steps:["Use simple charts.","Praise effort.","Repeat with patience."]},
+{id:13,cat:"ai",minutes:27,en:"Use AI as Your Daily Assistant",ar:"استخدم الذكاء الاصطناعي كمساعد يومي",summary:"How to use AI for planning, business, learning, and productivity.",arSummary:"كيف تستخدم الذكاء الاصطناعي للتخطيط والعمل والتعلم والإنتاجية.",steps:["Create daily prompts.","Save useful templates.","Review AI outputs before using."]},
+{id:14,cat:"ai",minutes:23,en:"Build Apps Without Being a Pro Coder",ar:"بناء تطبيقات بدون أن تكون مبرمج محترف",summary:"Use AI coding tools to create simple apps, websites, and business tools.",arSummary:"استخدم أدوات البرمجة بالذكاء الاصطناعي لبناء تطبيقات ومواقع وأدوات أعمال بسيطة.",steps:["Start with one feature.","Ask AI for one file first.","Test in browser."]},
+{id:15,cat:"life",minutes:16,en:"Clean Your Digital Life",ar:"تنظيف حياتك الرقمية",summary:"Organize files, apps, passwords, and notifications for less stress.",arSummary:"نظم ملفاتك وتطبيقاتك وكلمات المرور والتنبيهات لتقليل التوتر.",steps:["Delete unused apps.","Organize desktop files.","Turn off useless notifications."]},
+{id:16,cat:"life",minutes:18,en:"Daily Command Center",ar:"مركز القيادة اليومي",summary:"Plan your day around money tasks, health, family, and learning.",arSummary:"خطط يومك حول مهام المال والصحة والعائلة والتعلم.",steps:["Pick top 3 tasks.","Do money task first.","Review at night."]}
 ];
 
-const podcasts = [
-  {
-    id:1, cat:"mindset", minutes:18,
-    en:"Discipline Before Motivation",
-    ar:"الانضباط قبل التحفيز",
-    summary:"Learn why discipline beats temporary motivation and how to build a daily system.",
-    steps:["Pick one daily habit.","Do it at the same time every day.","Track it for 7 days."]
-  },
-  {
-    id:2, cat:"mindset", minutes:22,
-    en:"Stop Overthinking",
-    ar:"توقف عن التفكير الزائد",
-    summary:"Simple mental tools to reduce stress, decide faster, and stay focused.",
-    steps:["Write the problem in one sentence.","Choose the next small action.","Set a 10-minute decision timer."]
-  },
-  {
-    id:3, cat:"islam", minutes:15,
-    en:"Morning Athkar Routine",
-    ar:"روتين أذكار الصباح",
-    summary:"A peaceful morning routine with remembrance, gratitude, and protection duas.",
-    steps:["Start after Fajr or when you wake up.","Read slowly with meaning.","Repeat daily for consistency."]
-  },
-  {
-    id:4, cat:"islam", minutes:25,
-    en:"Quran Reflection for Busy People",
-    ar:"تدبر القرآن للناس المشغولين",
-    summary:"How to connect with Quran even with a busy schedule.",
-    steps:["Read 5 verses daily.","Write one lesson.","Apply one action that day."]
-  },
-  {
-    id:5, cat:"business", minutes:28,
-    en:"Build a Small Business System",
-    ar:"بناء نظام للأعمال الصغيرة",
-    summary:"Turn daily business chaos into repeatable systems for sales, follow-up, and service.",
-    steps:["Write your repeated tasks.","Make a checklist.","Automate one task this week."]
-  },
-  {
-    id:6, cat:"business", minutes:21,
-    en:"Sales Follow-Up That Works",
-    ar:"متابعة العملاء بطريقة ناجحة",
-    summary:"A practical way to follow up with customers without sounding pushy.",
-    steps:["Reply fast.","Ask one clear question.","Offer the next step."]
-  },
-  {
-    id:7, cat:"trading", minutes:30,
-    en:"Trading Psychology & Risk",
-    ar:"نفسية التداول وإدارة المخاطر",
-    summary:"Protect your capital by controlling emotion, position size, and bad entries.",
-    steps:["Risk small per trade.","Write entry and stop first.","Do not chase candles."]
-  },
-  {
-    id:8, cat:"trading", minutes:26,
-    en:"A+ Setup Checklist",
-    ar:"قائمة صفقة A+",
-    summary:"Use trend, VWAP, volume, and market bias before entering a trade.",
-    steps:["Check market direction.","Confirm VWAP and EMA alignment.","Wait for volume confirmation."]
-  },
-  {
-    id:9, cat:"health", minutes:20,
-    en:"Lose Belly Fat the Smart Way",
-    ar:"خسارة دهون البطن بطريقة ذكية",
-    summary:"Simple nutrition, walking, and strength habits to reduce belly fat over time.",
-    steps:["Walk 20-30 minutes.","Reduce sugary drinks.","Eat protein with each meal."]
-  },
-  {
-    id:10, cat:"health", minutes:17,
-    en:"Energy Every Morning",
-    ar:"طاقة كل صباح",
-    summary:"A morning routine for hydration, movement, breathing, and better focus.",
-    steps:["Drink water.","Move for 5 minutes.","Eat a balanced breakfast."]
-  },
-  {
-    id:11, cat:"family", minutes:19,
-    en:"Better Family Communication",
-    ar:"تواصل عائلي أفضل",
-    summary:"How to listen, speak calmly, and reduce arguments at home.",
-    steps:["Listen before replying.","Use calm voice.","Solve one issue at a time."]
-  },
-  {
-    id:12, cat:"family", minutes:24,
-    en:"Teaching Kids Good Habits",
-    ar:"تعليم الأطفال العادات الجيدة",
-    summary:"Make habits easy, visual, and rewarding for children.",
-    steps:["Use simple charts.","Praise effort.","Repeat with patience."]
-  },
-  {
-    id:13, cat:"ai", minutes:27,
-    en:"Use AI as Your Daily Assistant",
-    ar:"استخدم الذكاء الاصطناعي كمساعد يومي",
-    summary:"How to use AI for planning, business, learning, and productivity.",
-    steps:["Create daily prompts.","Save useful templates.","Review AI outputs before using."]
-  },
-  {
-    id:14, cat:"ai", minutes:23,
-    en:"Build Apps Without Being a Pro Coder",
-    ar:"بناء تطبيقات بدون أن تكون مبرمج محترف",
-    summary:"Use AI coding tools to create simple apps, websites, and business tools.",
-    steps:["Start with one feature.","Ask AI for one file first.","Test in browser."]
-  },
-  {
-    id:15, cat:"life", minutes:16,
-    en:"Clean Your Digital Life",
-    ar:"تنظيف حياتك الرقمية",
-    summary:"Organize files, apps, passwords, and notifications for less stress.",
-    steps:["Delete unused apps.","Organize desktop files.","Turn off useless notifications."]
-  },
-  {
-    id:16, cat:"life", minutes:18,
-    en:"Daily Command Center",
-    ar:"مركز القيادة اليومي",
-    summary:"Plan your day around money tasks, health, family, and learning.",
-    steps:["Pick top 3 tasks.","Do money task first.","Review at night."]
+let currentCat="all";
+let lang=localStorage.getItem("lang")||"en";
+let saved=JSON.parse(localStorage.getItem("savedPodcasts")||"[]");
+
+function label(obj){return lang==="ar"?obj.ar:obj.en}
+function speakText(text, language){
+  if(!("speechSynthesis" in window)){
+    alert("Your browser does not support voice playback.");
+    return;
   }
-];
-
-let currentCat = "all";
-let lang = localStorage.getItem("lang") || "en";
-let saved = JSON.parse(localStorage.getItem("savedPodcasts") || "[]");
-let timer = null;
-let progress = 0;
-
-document.getElementById("statShows").textContent = podcasts.length;
-
-function label(obj){ return lang === "ar" ? obj.ar : obj.en; }
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = language === "ar" ? "ar-SA" : "en-US";
+  utterance.rate = 0.92;
+  utterance.pitch = 1;
+  const voices = window.speechSynthesis.getVoices();
+  const preferred = voices.find(v => v.lang && v.lang.toLowerCase().startsWith(language === "ar" ? "ar" : "en"));
+  if(preferred) utterance.voice = preferred;
+  window.speechSynthesis.speak(utterance);
+}
+function playPodcast(id){
+  const p=podcasts.find(x=>x.id===id);
+  const text = lang==="ar"
+    ? `${p.ar}. ${p.arSummary}. الخطوات العملية: ${p.steps.join(". ")}`
+    : `${p.en}. ${p.summary}. Action steps: ${p.steps.join(". ")}`;
+  document.getElementById("nowPlaying").innerHTML=`Now playing: <b>${p.en}</b> | <span class="arabic">${p.ar}</span>`;
+  speakText(text, lang);
+}
+function pauseAudio(){ if("speechSynthesis" in window) window.speechSynthesis.pause(); }
+function resumeAudio(){ if("speechSynthesis" in window) window.speechSynthesis.resume(); }
+function stopAudio(){ if("speechSynthesis" in window) window.speechSynthesis.cancel(); document.getElementById("nowPlaying").innerHTML="Now playing: <b>Nothing yet</b>"; }
 
 function renderChips(){
-  const chips = document.getElementById("chips");
-  chips.innerHTML = "";
-  categories.forEach(c => {
-    const btn = document.createElement("button");
-    btn.className = "chip" + (currentCat === c.id ? " active" : "");
-    btn.textContent = label(c);
-    btn.onclick = () => { currentCat = c.id; render(); };
-    chips.appendChild(btn);
-  });
+  const chips=document.getElementById("chips"); chips.innerHTML="";
+  categories.forEach(c=>{const btn=document.createElement("button");btn.className="chip"+(currentCat===c.id?" active":"");btn.textContent=label(c);btn.onclick=()=>{currentCat=c.id;render()};chips.appendChild(btn);});
 }
-
 function render(){
   renderChips();
-  const q = document.getElementById("search").value.toLowerCase();
-  const sort = document.getElementById("sort").value;
-  let list = podcasts.filter(p => {
-    const hit = (p.en + " " + p.ar + " " + p.summary).toLowerCase().includes(q);
-    const catHit = currentCat === "all" || p.cat === currentCat;
-    return hit && catHit;
-  });
-
-  if(sort === "short") list.sort((a,b)=>a.minutes-b.minutes);
-  if(sort === "long") list.sort((a,b)=>b.minutes-a.minutes);
-
-  const box = document.getElementById("podcasts");
-  box.innerHTML = "";
-
-  list.forEach(p => {
-    const cat = categories.find(c=>c.id===p.cat);
-    const card = document.createElement("article");
-    card.className = "podcast";
-    card.innerHTML = `
+  document.body.dir=lang==="ar"?"rtl":"ltr";
+  const q=document.getElementById("search").value.toLowerCase();
+  const sort=document.getElementById("sort").value;
+  let list=podcasts.filter(p=>((p.en+" "+p.ar+" "+p.summary+" "+p.arSummary).toLowerCase().includes(q))&&(currentCat==="all"||p.cat===currentCat));
+  if(sort==="short")list.sort((a,b)=>a.minutes-b.minutes); if(sort==="long")list.sort((a,b)=>b.minutes-a.minutes);
+  const box=document.getElementById("podcasts"); box.innerHTML="";
+  list.forEach(p=>{
+    const cat=categories.find(c=>c.id===p.cat);
+    const card=document.createElement("article"); card.className="podcast";
+    card.innerHTML=`
       <div>
         <div class="badge">${label(cat)} • ${p.minutes} min</div>
         <h3>${p.en}</h3>
         <div class="arabic">${p.ar}</div>
-        <p class="summary">${p.summary}</p>
+        <p class="summary">${lang==="ar"?p.arSummary:p.summary}</p>
       </div>
       <div>
-        <div class="meta">
-          <span>${saved.includes(p.id) ? "Saved ✓" : "Not saved"}</span>
-          <span>${p.minutes} min</span>
-        </div>
+        <div class="meta"><span>${saved.includes(p.id)?"Saved ✓":"Not saved"}</span><span>${p.minutes} min</span></div>
         <div class="actions">
-          <button class="primary small" onclick="playPodcast(${p.id})">Play</button>
-          <button class="small save ${saved.includes(p.id) ? "saved":""}" onclick="savePodcast(${p.id})">Save</button>
+          <button class="primary small" onclick="playPodcast(${p.id})">▶ Play</button>
+          <button class="small" onclick="pauseAudio()">Pause</button>
+          <button class="small save ${saved.includes(p.id)?"saved":""}" onclick="savePodcast(${p.id})">Save</button>
           <button class="small" onclick="openSummary(${p.id})">Summary</button>
         </div>
-      </div>
-    `;
-    box.appendChild(card);
-  });
-
-  if(list.length === 0){
-    box.innerHTML = `<div class="panel"><h3>No podcasts found</h3><p class="summary">Try another search or category.</p></div>`;
-  }
-}
-
-function playPodcast(id){
-  const p = podcasts.find(x=>x.id===id);
-  document.getElementById("nowPlaying").innerHTML = `Now playing: <b>${p.en}</b> | <span class="arabic">${p.ar}</span>`;
-  progress = 0;
-  document.getElementById("bar").style.width = "0%";
-  clearInterval(timer);
-  timer = setInterval(()=>{
-    progress += 5;
-    document.getElementById("bar").style.width = progress + "%";
-    if(progress >= 100) clearInterval(timer);
-  }, 700);
-}
-
-function stopPlayer(){
-  clearInterval(timer);
-  progress = 0;
-  document.getElementById("bar").style.width = "0%";
-  document.getElementById("nowPlaying").innerHTML = "Now playing: <b>Nothing yet</b>";
-}
-
-function savePodcast(id){
-  if(saved.includes(id)) saved = saved.filter(x=>x!==id);
-  else saved.push(id);
-  localStorage.setItem("savedPodcasts", JSON.stringify(saved));
-  render();
-}
-
-function showSaved(){
-  currentCat = "all";
-  document.getElementById("search").value = "";
-  renderChips();
-  const box = document.getElementById("podcasts");
-  const list = podcasts.filter(p=>saved.includes(p.id));
-  box.innerHTML = "";
-  list.forEach(p => {
-    const card = document.createElement("article");
-    card.className = "podcast";
-    card.innerHTML = `
-      <div>
-        <div class="badge">Saved • ${p.minutes} min</div>
-        <h3>${p.en}</h3>
-        <div class="arabic">${p.ar}</div>
-        <p class="summary">${p.summary}</p>
-      </div>
-      <div class="actions">
-        <button class="primary small" onclick="playPodcast(${p.id})">Play</button>
-        <button class="small" onclick="savePodcast(${p.id})">Remove</button>
-        <button class="small" onclick="openSummary(${p.id})">Summary</button>
       </div>`;
     box.appendChild(card);
   });
-  if(list.length === 0) box.innerHTML = `<div class="panel"><h3>No saved podcasts yet</h3><p class="summary">Save episodes to see them here.</p></div>`;
+  if(!list.length) box.innerHTML=`<div class="panel"><h3>No podcasts found</h3><p class="summary">Try another search or category.</p></div>`;
 }
-
+function savePodcast(id){saved=saved.includes(id)?saved.filter(x=>x!==id):[...saved,id];localStorage.setItem("savedPodcasts",JSON.stringify(saved));render();}
+function showSaved(){
+  currentCat="all"; document.getElementById("search").value="";
+  const box=document.getElementById("podcasts"); box.innerHTML="";
+  const list=podcasts.filter(p=>saved.includes(p.id));
+  list.forEach(p=>{const card=document.createElement("article");card.className="podcast";card.innerHTML=`<div><div class="badge">Saved • ${p.minutes} min</div><h3>${p.en}</h3><div class="arabic">${p.ar}</div><p class="summary">${lang==="ar"?p.arSummary:p.summary}</p></div><div class="actions"><button class="primary small" onclick="playPodcast(${p.id})">▶ Play</button><button class="small" onclick="savePodcast(${p.id})">Remove</button><button class="small" onclick="openSummary(${p.id})">Summary</button></div>`;box.appendChild(card);});
+  if(!list.length) box.innerHTML=`<div class="panel"><h3>No saved podcasts yet</h3><p class="summary">Save episodes to see them here.</p></div>`;
+}
 function openSummary(id){
-  const p = podcasts.find(x=>x.id===id);
-  document.getElementById("modalTitle").innerHTML = `${p.en}<br><span class="arabic">${p.ar}</span>`;
-  document.getElementById("modalSummary").textContent = p.summary;
-  document.getElementById("modalSteps").innerHTML = p.steps.map(s=>`<li>${s}</li>`).join("");
+  const p=podcasts.find(x=>x.id===id);
+  document.getElementById("modalTitle").innerHTML=`${p.en}<br><span class="arabic">${p.ar}</span>`;
+  document.getElementById("modalSummary").textContent=lang==="ar"?p.arSummary:p.summary;
+  document.getElementById("modalSteps").innerHTML=p.steps.map(s=>`<li>${s}</li>`).join("");
   document.getElementById("modal").classList.add("show");
 }
-
-function closeModal(e){
-  if(e.target.id === "modal") document.getElementById("modal").classList.remove("show");
-}
-
+function closeModal(e){if(e.target.id==="modal")document.getElementById("modal").classList.remove("show")}
 function toggleLanguage(){
-  lang = lang === "en" ? "ar" : "en";
-  localStorage.setItem("lang", lang);
-  document.body.dir = lang === "ar" ? "rtl" : "ltr";
-  document.getElementById("heroTitle").textContent = lang === "ar" ? "تطبيقك اليومي للتعلم الصوتي" : "Your daily audio learning app";
-  document.getElementById("heroText").textContent = lang === "ar" ? "اختر تصنيف، شغل فكرة بودكاست جاهزة، احفظها، وحولها إلى خطوات عملية." : "Open the app, choose a life category, play a pre-built episode idea, save it, and convert it into simple action steps.";
+  lang=lang==="en"?"ar":"en"; localStorage.setItem("lang",lang);
+  document.getElementById("heroTitle").textContent=lang==="ar"?"تطبيقك اليومي للتعلم الصوتي":"Your daily audio learning app";
+  document.getElementById("heroText").textContent=lang==="ar"?"اضغط تشغيل وسيقرأ التطبيق الحلقة بصوت المتصفح. يعمل على GitHub Pages.":"Press Play and the app will read the podcast using your browser voice. Works on GitHub Pages.";
   render();
 }
-
-toggleLanguage();
-if(lang === "en") toggleLanguage();
+document.addEventListener("DOMContentLoaded",()=>{if(lang==="ar"){document.body.dir="rtl";} render();});
 </script>
 </body>
 </html>
