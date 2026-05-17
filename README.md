@@ -1,20 +1,28 @@
-# Life Podcasts App — Working Playback Version
+# YouTube Life Podcast App
 
-This version uses the browser's built-in **Speech Synthesis** voice system.
+Arabic + English podcast app using real embedded YouTube videos.
 
-## How it plays
-- Click **Play**
-- The app reads the podcast summary out loud
-- Works on Chrome, Edge, Safari, and most modern browsers
-- No MP3 hosting needed
+## Files
+- `index.html` — full app in one file.
 
-## GitHub Pages
-1. Upload `index.html` to a GitHub repo.
-2. Go to Settings → Pages.
-3. Source: Deploy from branch.
-4. Branch: main.
-5. Folder: /root.
-6. Save.
+## Upload to GitHub Pages
+1. Create a new GitHub repository.
+2. Upload `index.html`.
+3. Go to **Settings**.
+4. Click **Pages**.
+5. Source: **Deploy from a branch**.
+6. Branch: **main**.
+7. Folder: **/root**.
+8. Save.
 
-## Important
-Arabic voice depends on the browser/device. If Arabic voice is not installed, the browser may use another voice.
+## Change YouTube videos
+In `index.html`, replace this part:
+
+```html
+https://www.youtube.com/embed/VIDEO_ID
+```
+
+Use YouTube embed format only:
+```html
+https://www.youtube.com/embed/YOUTUBE_VIDEO_ID
+```
